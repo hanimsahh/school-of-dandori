@@ -80,8 +80,9 @@ def get_favorites(user_id):
 if "user_id" not in st.session_state:
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.title("🍃 The School of Dandori")
-        st.subheader("The philosophy of the school is that we should enjoy our time and look after our wellbeing")
+        st.title("🍃 School of Dandori")
+        st.subheader("The philosophy of the school is that we should enjoy our time and look after our wellbeing.")
+        st.write("*We offer a range of activities and courses to help you find your flow and connect with others. Please enter a name or ID to access the sanctuary.*")
         user_input = st.text_input("How shall we address you?", placeholder="Enter a name or ID...")
         if st.button("Enter the Sanctuary"):
             if user_input.strip():
