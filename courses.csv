@@ -1,0 +1,212 @@
+file,title,instructor,location,cost
+class_001_The_Art_of_Wondrous_Waffle_Weaving.pdf,The Art of Wondrous Waffle Weaving,Chef Waffleby,Harrogate,75
+class_002_Cornish_Pasty_Poetry__Patisserie.pdf,Cornish Pasty Poetry & Patisserie,Chef Rhubarb Mince,Cornwall,85
+class_003_Mystical_Moss_Mosaics.pdf,Mystical Moss Mosaics,Professor Mossbottom,Scottish Highlands,85
+class_004_Advanced_Hedgehog_Husbandry.pdf,Advanced Hedgehog Husbandry,Mr. Pricklesworth,Norfolk,95
+class_005_Leafy_Quill_and_Ink_Potion_Mastery.pdf,Leafy Quill and Ink Potion Mastery,Professor Ivy Fernsnap,Oxford,75
+class_006_The_Great_British_Biscuit_Bonanza_Enchanted_Edible_Tins.pdf,The Great British Biscuit Bonanza: Enchanted Edible Tins,Mrs. Crumblebottom,Inverness,75
+class_007_Medieval_Spoon_Forging_for_the_Modern_Soul.pdf,Medieval Spoon Forging for the Modern Soul,Sir Tindlewood the Crafty,Brighton,75
+class_008_Magical_Woolly_Mammoth_Sculpting.pdf,Magical Woolly Mammoth Sculpting,Professor Woolly Mammoth,Northumberland,75
+class_009_Giggling_Goblets_Mastering_the_Art_of_Medieval_Upcycling.pdf,Giggling Goblets: Mastering the Art of Medieval Upcycling,Sir Arthur Cupsmith,Inverness,95
+class_010_Crafting_with_Unicorn_Yarn.pdf,Crafting with Unicorn Yarn,Sir Stitch-a-Lot,Brighton,95
+class_011_the_art_of_cloud_sculpting_shaping_the_skies.pdf,The Art of Cloud Sculpting: Shaping the Skies,Professor Nimbus Skytamer,Chester,85
+class_012_quintessentially_quirky_quill_crafting.pdf,Quintessentially Quirky Quill Crafting,Penelope Plume,Cotswolds,75
+class_013_fantastical_felted_creature_concoctions.pdf,Fantastical Felted Creature Concoctions,Ms. Woolina Fuzzbubble,Peak District,85
+class_014_medieval_candle_magic_for_the_modern_soul.pdf,Medieval Candle Magic for the Modern Soul,Lady Luminary,Cornwall,85
+class_015_the_magical_marmalade_adventure.pdf,The Magical Marmalade Adventure,Chef Marmalock,Inverness,55
+class_016_enchanted_tartan_weaving_with_nessie.pdf,Enchanted Tartan Weaving with Nessie,Professor Plaid McLoom,Scottish Highlands,85
+class_017_the_mad_hatters_culinary_hat-trick.pdf,The Mad Hatter's Culinary Hat-Trick,Chef Alice Pottles,Stratford-upon-Avon,75
+class_018_enchanted_cornish_pasty_sculpting.pdf,Enchanted Cornish Pasty Sculpting,Chef Crumblebottom,Cornwall,95
+class_019_gnome_knots_and_garden_magic.pdf,Gnome Knots and Garden Magic,Professor Petalweaver,Harrogate,45
+class_020_cunning_crochet_capers_with_captain_yarnbeard.pdf,Cunning Crochet Capers with Captain Yarnbeard,Captain Yarnbeard,Stratford-upon-Avon,75
+class_021_feathered_friendship_flight_school.pdf,Feathered Friendship Flight School,Professor Aviary Skylark,Oxford,75
+class_022_wondrous_wand_weaving_and_wizardry.pdf,Wondrous Wand Weaving and Wizardry,Professor Thistle Twigg,Peak District,85
+class_023_the_art_of_whimsical_waffle_weaving.pdf,The Art of Whimsical Waffle Weaving,Chef Waffleton Crumble,York,75
+class_024_shakespearean_sheep_shearing.pdf,Shakespearean Sheep Shearing,Woolly Bill,Lake District,75
+class_025_mindful_bubble_blowing_and_zen_soap_sculpting.pdf,Mindful Bubble Blowing and Zen Soap Sculpting,Professor Sudsy,Canterbury,65
+class_026_clandestine_cloud_sculpting.pdf,Clandestine Cloud Sculpting,Professor Nimbus,Devon,85
+class_027_zen_and_the_art_of_bubble_wrap_meditation.pdf,Zen and the Art of Bubble Wrap Meditation,Bubbles McGuffin,Windsor,75
+class_028_ye_olde_dragon-charmers_blacksmithing_workshop.pdf,Ye Olde Dragon-Charmer's Blacksmithing Workshop,Sir Anvil McFireheart,Edinburgh,95
+class_029_fantastical_fairy_tale_weaving.pdf,Fantastical Fairy Tale Weaving,Miss Tapestry Twiddle,Stratford-upon-Avon,95
+class_030_the_art_of_fantastical_fondue_fables.pdf,The Art of Fantastical Fondue Fables,Chef Fromage Fanciful,Bath,75
+class_031_whimsical_woodland_wand_making.pdf,Whimsical Woodland Wand Making,Professor Twiggy Branch,Norfolk,75
+class_032_fantastical_felted_creature_crafting.pdf,Fantastical Felted Creature Crafting,Fiona Fluffweaver,Windsor,75
+class_033_pirate_pastry_plundering.pdf,Pirate Pastry Plundering,Captain Crumbbeard,Cornwall,75
+class_034_bespoke_bubble_artistry_and_meditative_pondering.pdf,Bespoke Bubble Artistry and Meditative Pondering,Professor Effervescence,York,65
+class_035_whimsical_wand-making_the_enchanted_art_of_crafting_magic.pdf,Whimsical Wand-Making: The Enchanted Art of Crafting Magic,Professor Willow Twiggle,Harrogate,80
+class_036_autumnal_wind_symphony_leaf_composition_workshop.pdf,Autumnal Wind Symphony: Leaf Composition Workshop,Maestro Breezy Whistlebottom,Cotswolds,75
+class_037_laughter_yoga_and_symphony_of_silliness.pdf,Laughter Yoga and Symphony of Silliness,Professor Chuckles McGiggle,Inverness,45
+class_038_the_art_of_whimsical_waffle_meditation.pdf,The Art of Whimsical Waffle Meditation,Professor Crispin Batter,Devon,85
+class_039_the_art_of_cloud_sculpting.pdf,The Art of Cloud Sculpting,Professor Nimbus Drizzle,Bath,75
+class_040_enchanted_yarn_spinning_crafting_magical_threads.pdf,Enchanted Yarn Spinning: Crafting Magical Threads,Professor Twiddleknit,Brighton,95
+class_041_jubilant_jellybean_mindfulness.pdf,Jubilant Jellybean Mindfulness,Sir Jellybean Jollington,Cambridge,75
+class_042_enchanted_spoon_carving__storytelling.pdf,Enchanted Spoon Carving & Storytelling,Sir Whittlewood,Lake District,75
+class_043_laughter_yoga_and_giggle_pottery.pdf,Laughter Yoga and Giggle Pottery,Joyce Chuckles,Peak District,75
+class_044_grandiose_googly_eye_mastery.pdf,Grandiose Googly Eye Mastery,Professor Optic,Suffolk,75
+class_045_whimsical_watercolour_wonders_the_art_of_painting_puddles.pdf,Whimsical Watercolour Wonders: The Art of Painting Puddles,Mistress Monet McSplash,Glasgow,85
+class_046_victorian_ghost_quilt_revival.pdf,Victorian Ghost Quilt Revival,Madam Penelope Thimbleworth,Durham,65
+class_047_the_great_british_bake-off_in_miniature_fairy_cake_architecture.pdf,The Great British Bake-off in Miniature: Fairy Cake Architecture,Daisy Buttercream,Peak District,65
+class_048_pumpkin_carriage_creations.pdf,Pumpkin Carriage Creations,Lady Gourdina of Squashville,Oxford,75
+class_049_the_art_of_edible_poetry_culinary_sonnet_creations.pdf,The Art of Edible Poetry: Culinary Sonnet Creations,Chef Rhymus Scone,Brighton,85
+class_050_cloud_gazing_and_whimsical_weather_writing.pdf,Cloud Gazing and Whimsical Weather Writing,Professor Nimbus Cloudsworth,Exeter,65
+class_051_medieval_banter_and_bard_building.pdf,Medieval Banter and Bard Building,Sir Lyric Lancelot,Harrogate,75
+class_052_laughter_yoga_with_giggle_guru_graham.pdf,Laughter Yoga with Giggle Guru Graham,Giggle Guru Graham,Brighton,85
+class_053_joyful_umbrella_juggling_dance_in_the_rain.pdf,Joyful Umbrella Juggling: Dance in the Rain,Miss Poppy Brolly,Edinburgh,75
+class_054_alpaca_yarn_yodeling.pdf,Alpaca Yarn Yodeling,Fiona Fuzzington,Scottish Highlands,85
+class_055_magical_macramé_mixtures.pdf,Magical Macramé Mixtures,Professor Knott McCord,Brighton,55
+class_056_peculiar_portraits_painting_with_potatoes.pdf,Peculiar Portraits: Painting with Potatoes,Professor Spudsworth,Brighton,75
+class_057_cloud_appreciation__sky_story_weaving.pdf,Cloud Appreciation & Sky Story Weaving,Skylar Nimbus,Cotswolds,80
+class_058_mastering_the_art_of_whimsical_clockwork_the_joyful_tinkerers_guide.pdf,Mastering the Art of Whimsical Clockwork: The Joyful Tinkerer's Guide,Tick Tockington,Exeter,75
+class_059_seasonal_leaf_juggling_and_story_weaving.pdf,Seasonal Leaf Juggling and Story Weaving,Maple Twirlworthy,Brighton,60
+class_060_culinary_alchemy_transforming_veggies_into_happiness.pdf,Culinary Alchemy: Transforming Veggies into Happiness,Chef Joyful Carrot,Norfolk,75
+class_061_enchanted_tart_taming.pdf,Enchanted Tart Taming,Chef Flambé O'Floury,Edinburgh,65
+class_062_ye_olde_puppet_parlay_the_art_of_joyous_jesting.pdf,Ye Olde Puppet Parlay: The Art of Joyous Jesting,Jasper Jinglewood,Cornwall,95
+class_063_medieval_manuscript_illuminating.pdf,Medieval Manuscript Illuminating,Lady Penelope Scrollington,York,85
+class_064_cloud_sculpting_for_the_soul.pdf,Cloud Sculpting for the Soul,Professor Nimbus Drizzle,Scottish Highlands,75
+class_065_twilight_lantern_illuminations_crafting_glowing_fantasies.pdf,Twilight Lantern Illuminations: Crafting Glowing Fantasies,Gloria Glimmer,Cambridge,95
+class_066_medieval_jousting_pillow_combat.pdf,Medieval Jousting Pillow Combat,Lady Gwendolyn Swashbuckler,Durham,95
+class_067_the_art_of_joyful_bubbleology.pdf,The Art of Joyful Bubbleology,Professor Bubbly Bliss,Oxford,75
+class_068_medieval_manuscript_illumination_and_interpretive_dance.pdf,Medieval Manuscript Illumination and Interpretive Dance,Lady Quillington,Windsor,75
+class_069_enchanted_yarn_spinning_and_unicorn_mane_crafting.pdf,Enchanted Yarn Spinning and Unicorn Mane Crafting,Ms. Augusta Woollymane,Durham,75
+class_070_edwardian_whimsical_toy-making.pdf,Edwardian Whimsical Toy-Making,Master Toymaker Tinker Tall,Exeter,75
+class_071_joyful_juggling_for_inner_peace.pdf,Joyful Juggling for Inner Peace,Professor Tossington,Stratford-upon-Avon,75
+class_072_the_art_of_puddle_jumping__splashology.pdf,The Art of Puddle Jumping & Splashology,Professor Rainwater,York,75
+class_073_enchanted_yarnspinning_with_the_knit-wizard.pdf,Enchanted Yarnspinning with the Knit-Wizard,Sir Stitch-a-Lot,Cambridge,85
+class_074_fantastical_feathered_friend_portraits.pdf,Fantastical Feathered Friend Portraits,Professor Avian Artistry,Chester,90
+class_075_surrealist_potion_painting.pdf,Surrealist Potion Painting,Professor Artimus Splatter,Peak District,75
+class_076_festive_gnome_crafting_and_etiquette.pdf,Festive Gnome Crafting and Etiquette,Professor Pippin Tinkersworth,Cotswolds,85
+class_077_masterful_muffin_mosaics.pdf,Masterful Muffin Mosaics,Baker Bea,Inverness,75
+class_078_the_art_of_culinary_symphonies_conducting_your_edible_orchestra.pdf,The Art of Culinary Symphonies: Conducting Your Edible Orchestra,Maestro Basil Oregano,Cotswolds,75
+class_079_medieval_merriment_with_quill__ink.pdf,Medieval Merriment with Quill & Ink,Sir Scribbleworth,Glasgow,85
+class_080_culinary_cloud_sculpting.pdf,Culinary Cloud Sculpting,Chef Nimbus,Exeter,75
+class_081_whimsical_weaving_the_art_of_storytelling_scarves.pdf,Whimsical Weaving: The Art of Storytelling Scarves,Ms. Penelope Patterns,Suffolk,85
+class_082_whimsical_whittling_carve_your_own_wooden_companion.pdf,Whimsical Whittling: Carve Your Own Wooden Companion,Mr. Chip Carver,Bath,80
+class_083_enchanted_kite_crafting__aerobatics.pdf,Enchanted Kite Crafting & Aerobatics,Professor Zephyr Windchaser,Suffolk,85
+class_084_dragon_egg_marbling__mythical_tales.pdf,Dragon Egg Marbling & Mythical Tales,Professor Drakesworth,Devon,85
+class_085_majestic_quill__ink_wizardry.pdf,Majestic Quill & Ink Wizardry,Professor Parchment Featherbottom,Inverness,75
+class_086_the_enchanted_spoon_traditional_wooden_spoon_carving_and_charm_whispering.pdf,The Enchanted Spoon: Traditional Wooden Spoon Carving and Charm Whispering,Master Whittler Gwyn,Exeter,95
+class_087_mindful_marmalade__jam_jamboree.pdf,Mindful Marmalade & Jam Jamboree,Jemima Jelly,York,75
+class_088_mystical_moss_mastery.pdf,Mystical Moss Mastery,Fern Greenleaf,Peak District,45
+class_089_brighton_beach_pebble_painting_and_personality_analysis.pdf,Brighton Beach Pebble Painting and Personality Analysis,Professor Pebbles,Brighton,75
+class_090_culinary_cloud_sculpting_edible_art_from_the_skies.pdf,Culinary Cloud Sculpting: Edible Art from the Skies,Chef Nimbus Puddington,Inverness,75
+class_091_exquisite_egg_balancing_and_breakfast_alchemy.pdf,Exquisite Egg Balancing and Breakfast Alchemy,Chef Benedict Yoke,Devon,60
+class_092_enchanted_scarecrow_design.pdf,Enchanted Scarecrow Design,Professor Hayfield,Stratford-upon-Avon,75
+class_093_biscuit_alchemy_turning_dough_into_joy.pdf,Biscuit Alchemy: Turning Dough Into Joy,Professor Crumbly O'Cookie,York,75
+class_094_the_art_of_leaf_juggling_and_acorn_crafting.pdf,The Art of Leaf Juggling and Acorn Crafting,Professor Flora Fling,York,85
+class_095_enchanted_pasty_crafting.pdf,Enchanted Pasty Crafting,Chef Basil Parsnip,Lake District,95
+class_096_ye_olde_mythical_beast_embroidery.pdf,Ye Olde Mythical Beast Embroidery,Sir Stitch-a-Lot,Lake District,60
+class_097_majestic_marmalade_mastery.pdf,Majestic Marmalade Mastery,Lady Clementine Pippin,Suffolk,55
+class_098_laughter_yoga_giggles__guffaws.pdf,Laughter Yoga: Giggles & Guffaws,Professor Chuckles McGiggle,Brighton,45
+class_099_wondrous_wand_crafting_with_woodland_wonders.pdf,Wondrous Wand Crafting with Woodland Wonders,Professor Oakly Sprig,Exeter,75
+class_100_the_enchanting_art_of_gargoyle_sculpting.pdf,The Enchanting Art of Gargoyle Sculpting,Professor Granville Gargoyle,Devon,75
+class_101_sculpting_with_clouds_a_day_of_playful_creation.pdf,Sculpting with Clouds: A Day of Playful Creation,Cumulus Nimbus,Devon,85
+class_102_whimsical_watercolours_painting_with_puddles.pdf,Whimsical Watercolours: Painting with Puddles,Drizzle McBrush,Canterbury,75
+class_103_cheese_rolling__cheese_crafting.pdf,Cheese Rolling & Cheese Crafting,Cheddar Chalmer,Suffolk,75
+class_104_strategic_snail_racing_techniques.pdf,Strategic Snail Racing Techniques,Professor Slothington Snailhardt,Inverness,65
+class_105_bubble_poetry_and_balloon_haiku.pdf,Bubble Poetry and Balloon Haiku,Professor Pippa Puff,Devon,55
+class_106_woodland_creature_construction__conversing.pdf,Woodland Creature Construction & Conversing,Professor Twiggy Whittle,Scottish Highlands,75
+class_107_pumpkin_carving_for_time_travelers.pdf,Pumpkin Carving for Time Travelers,Professor Gourdly McSquash,Cambridge,75
+class_108_tea_leaf_reading_for_the_modern_soul.pdf,Tea Leaf Reading for the Modern Soul,Mystic Myrtle,Lake District,85
+class_109_the_art_of_enthusiastic_envelope_folding.pdf,The Art of Enthusiastic Envelope Folding,Professor Pippa Papercraft,Northumberland,65
+class_110_enchanted_garden_gnome_sculpting.pdf,Enchanted Garden Gnome Sculpting,Petunia Pebbles,Stratford-upon-Avon,75
+class_111_the_art_of_lush_leaf_lamentation.pdf,The Art of Lush Leaf Lamentation,Fernando Greenfingers,Canterbury,75
+class_112_enchanted_cornish_pasties_a_culinary_journey.pdf,Enchanted Cornish Pasties: A Culinary Journey,Chef Crumble Crustworthy,Cornwall,75
+class_113_giggle_yoga_laughter_and_lightness.pdf,Giggle Yoga: Laughter and Lightness,Sir Chuckleberry,York,75
+class_114_galactic_gourmet_cooking_with_cosmic_spices.pdf,Galactic Gourmet: Cooking with Cosmic Spices,Chef Nebula Nightshade,Edinburgh,75
+class_115_medieval_spoon_carving_and_goblet_juggling.pdf,Medieval Spoon Carving and Goblet Juggling,Master Carver Whittlewood,Exeter,75
+class_116_fantastical_feathered_friend_nesting.pdf,Fantastical Feathered Friend Nesting,Professor Pippa Partridge,Edinburgh,95
+class_117_the_art_of_gourmet_sandwich_sculpture.pdf,The Art of Gourmet Sandwich Sculpture,Chef Baguette,Glasgow,75
+class_118_laughter_yoga_with_chuckles_mcgee.pdf,Laughter Yoga with Chuckles McGee,Chuckles McGee,Lake District,75
+class_119_enchanted_quill__scribe_owl_penmanship_and_magical_letter_writing.pdf,Enchanted Quill & Scribe: Owl Penmanship and Magical Letter Writing,Professor Inkwell,Bath,95
+class_120_enchanted_leafcraft__whimsical_woodland_sculpture.pdf,Enchanted Leafcraft & Whimsical Woodland Sculpture,Fern Twigglewood,Norfolk,75
+class_121_mindful_marmalade_meditations.pdf,Mindful Marmalade Meditations,Ms. Citrus Clementine,Lake District,65
+class_122_quantum_knitting_the_art_of_stitching_time_and_space.pdf,Quantum Knitting: The Art of Stitching Time and Space,Professor Polly Purl,York,70
+class_123_gourmet_pumpkin_carving_carnival.pdf,Gourmet Pumpkin Carving Carnival,Gourmet Gordon Squash,Bath,60
+class_124_enchanted_faery_nest_weaving.pdf,Enchanted Faery Nest Weaving,Thistle Greenleaf,Cambridge,75
+class_125_enchanted_yarn_spinning_for_time_travelers.pdf,Enchanted Yarn Spinning for Time Travelers,Professor Twizzle Bobbin,Exeter,85
+class_126_spinning_tales_fanciful_yarn_and_story_weaving.pdf,Spinning Tales: Fanciful Yarn and Story Weaving,Mrs. Penelope Purl,Windsor,95
+class_127_quantum_tea_leaf_reading.pdf,Quantum Tea Leaf Reading,Professor Earl Grey,Inverness,75
+class_128_enchanted_yarn_spinning_from_sheep_to_sheepish.pdf,Enchanted Yarn Spinning: From Sheep to Sheepish,Miss Tilly Twirls,Devon,60
+class_129_the_art_of_whimsical_umbrella_dancing.pdf,The Art of Whimsical Umbrella Dancing,Drizzle McCloud,Cotswolds,65
+class_130_cheery_cloud_climbing_for_beginners.pdf,Cheery Cloud Climbing for Beginners,Mistress Nimbus,Northumberland,95
+class_131_whimsical_bee_ballet.pdf,Whimsical Bee Ballet,Buzz Beekeeper,Norfolk,75
+class_132_whimsical_waffle_alchemy.pdf,Whimsical Waffle Alchemy,Chef Waffleton Splendid,Glasgow,75
+class_133_gastronomic_time_travel_medieval_banquet_alchemy.pdf,Gastronomic Time Travel: Medieval Banquet Alchemy,Chef Alaric Cauldron,Lake District,85
+class_134_laughter_yoga__giggleology.pdf,Laughter Yoga & Giggleology,Professor Chucklesworth,Bath,75
+class_135_knotty_gnome_haberdashery.pdf,Knotty Gnome Haberdashery,Professor Purl McYarn,Devon,45
+class_136_enchanted_spoon_whittling__musical_utensil_orchestra.pdf,Enchanted Spoon Whittling & Musical Utensil Orchestra,Maestro Woodington,Cambridge,65
+class_137_giggling_yoga_with_highland_yeti.pdf,Giggling Yoga with Highland Yeti,Lachlan McGiggles,Scottish Highlands,75
+class_138_enchanted_moss_gardens_and_lichen_lore.pdf,Enchanted Moss Gardens and Lichen Lore,Professor Fern Lichenstein,Glasgow,85
+class_139_the_joyful_jam_jamboree.pdf,The Joyful Jam Jamboree,Chef Marmalade McTwist,Canterbury,75
+class_140_enchanted_yarn_sculpting_crafting_mythical_creatures.pdf,Enchanted Yarn Sculpting: Crafting Mythical Creatures,Professor Twiddlethread,Devon,95
+class_141_laughter_yoga_and_juggling_for_joy.pdf,Laughter Yoga and Juggling for Joy,Giggles McGee,Peak District,55
+class_142_quaint_quillmanship_the_art_of_feather_penmanship.pdf,Quaint Quillmanship: The Art of Feather Penmanship,Professor Quilliam Featherbottom,York,65
+class_143_autumn_leaf_laughter_yoga.pdf,Autumn Leaf Laughter Yoga,Professor Twiggy Thompson,Cotswolds,60
+class_144_enchanted_yarn_ballet.pdf,Enchanted Yarn Ballet,Felicity Purlwell,Glasgow,95
+class_145_the_art_of_culinary_wizardry_conjuring_magic_with_marshmallows.pdf,The Art of Culinary Wizardry: Conjuring Magic with Marshmallows,Chef Wandsworth Sugarsmith,Inverness,65
+class_146_quaint_quillmanship_the_art_of_feather_pen_flourishing.pdf,Quaint Quillmanship: The Art of Feather Pen Flourishing,Penelope Parchment,Durham,70
+class_147_the_art_of_cloud_appreciation__skydancing.pdf,The Art of Cloud Appreciation & Skydancing,Professor Nimbus,Cambridge,75
+class_148_the_art_of_doodle_cartography_mapping_your_inner_worlds.pdf,The Art of Doodle Cartography: Mapping Your Inner Worlds,Penelope Parchment,Glasgow,65
+class_149_enchanted_umbrella_alchemy.pdf,Enchanted Umbrella Alchemy,Mistress Raindrop,Windsor,75
+class_150_the_art_of_bubble_meditation.pdf,The Art of Bubble Meditation,Serenity Soapbubble,Chester,45
+class_151_mad_hatters_culinary_chaos_an_edible_adventure.pdf,Mad Hatter's Culinary Chaos: An Edible Adventure,Chef Whiskers McChuckle,Windsor,75
+class_152_the_art_of_mindful_umbrella_ballet.pdf,The Art of Mindful Umbrella Ballet,Madame Drizzle,Suffolk,45
+class_153_fantastical_felt_creature_crafting.pdf,Fantastical Felt Creature Crafting,Professor Puffington,Bath,60
+class_154_the_enchanted_tapestry_of_time.pdf,The Enchanted Tapestry of Time,Professor Weavewell,Harrogate,95
+class_155_whimsical_whisking__culinary_charms.pdf,Whimsical Whisking & Culinary Charms,Chef Whispero,Glasgow,75
+class_156_autumnal_pop-up_pumpkin_palooza.pdf,Autumnal Pop-Up Pumpkin Palooza,Gourdie Gourd,Edinburgh,125
+class_157_enchanted_quill_crafting_and_scroll_scribing.pdf,Enchanted Quill Crafting and Scroll Scribing,Quill Master Penelope,Brighton,80
+class_158_the_art_of_cloud_sculpting_for_inner_calm.pdf,The Art of Cloud Sculpting for Inner Calm,Professor Nimbus Drifter,Northumberland,65
+class_159_giggles__garlands_the_art_of_laughter_yoga.pdf,Giggles & Garlands: The Art of Laughter Yoga,Professor Chuckleberry,Windsor,75
+class_160_eccentric_yarn_sculpting_the_art_of_wool_whimsy.pdf,Eccentric Yarn Sculpting: The Art of Wool Whimsy,Professor Knitwell,Cambridge,95
+class_161_majestic_millinery_the_art_of_fantastical_hat-making.pdf,Majestic Millinery: The Art of Fantastical Hat-Making,Madame Felicity Feathers,Harrogate,95
+class_162_the_art_of_laughter-pickling.pdf,The Art of Laughter-Pickling,Professor Chortleberry,Northumberland,75
+class_163_laughter_yoga__joyful_juggling.pdf,Laughter Yoga & Joyful Juggling,Mr. Chuckles,Inverness,75
+class_164_enchanted_acorn_artistry.pdf,Enchanted Acorn Artistry,Professor Hazel Nutting,Devon,75
+class_165_the_art_of_joyful_quill_wiggling.pdf,The Art of Joyful Quill Wiggling,Professor Quilliam Jolly,Stratford-upon-Avon,75
+class_166_the_art_of_culinary_confusion_enchanted_edibles.pdf,The Art of Culinary Confusion: Enchanted Edibles,Chef Meringue Twirl,Bath,70
+class_167_gnome-guided_hiking_adventures.pdf,Gnome-Guided Hiking Adventures,Professor Pebble,Glasgow,75
+class_168_pirate_parrot_persuasion_the_art_of_avian_alliances.pdf,Pirate Parrot Persuasion: The Art of Avian Alliances,Captain Tweetbeak,Suffolk,85
+class_169_medieval_mead-making_merriment.pdf,Medieval Mead-Making Merriment,Dame Honeydew Alecraft,York,75
+class_170_whimsical_wind_chimes__enchanted_breezes.pdf,Whimsical Wind Chimes & Enchanted Breezes,Breezy McWinderson,York,75
+class_171_swordplay_and_scones_a_jolly_joust_of_heritage.pdf,Swordplay and Scones: A Jolly Joust of Heritage,Sir Nigel Butterfield,Edinburgh,95
+class_172_joyful_umbrella_acrobatics_extravaganza.pdf,Joyful Umbrella Acrobatics Extravaganza,Professor Breezy Parasol,Canterbury,85
+class_173_mystical_yarn_spinning_for_joyful_souls.pdf,Mystical Yarn Spinning for Joyful Souls,Dame Twizzle Woolwhirl,Cambridge,85
+class_174_quirky_quill_crafting.pdf,Quirky Quill Crafting,Quincy Quillington,Northumberland,65
+class_175_enchanted_spoon_carving_for_the_bewitched_chef.pdf,Enchanted Spoon Carving for the Bewitched Chef,Master Carver Whittler,Glasgow,45
+class_176_laughter-infused_cloud_watching_and_sky_sketching.pdf,Laughter-Infused Cloud Watching and Sky Sketching,Professor Chuckle Skygazer,Northumberland,75
+class_177_woolly_wonderland_mythical_creature_crochet.pdf,Woolly Wonderland: Mythical Creature Crochet,Mrs. Prudence Purl,Inverness,45
+class_178_highland_gnome_gathering_with_gertie.pdf,Highland Gnome Gathering with Gertie,Gertie McGnome,Scottish Highlands,75
+class_179_whisker_symphony_the_art_of_cat_choir_conducting.pdf,Whisker Symphony: The Art of Cat Choir Conducting,Maestro Felix Furthoven,Peak District,85
+class_180_laughter_yoga__chuckle_therapy.pdf,Laughter Yoga & Chuckle Therapy,Professor Gigglebottom,Northumberland,65
+class_181_enchanted_yarn_spinning_with_sir_woolly_whirlwind.pdf,Enchanted Yarn Spinning with Sir Woolly Whirlwind,Sir Woolly Whirlwind,Harrogate,80
+class_182_expressive_balloon_sculpting.pdf,Expressive Balloon Sculpting,Professor Pop Loon,Devon,75
+class_183_enchanted_pebble_painting_for_joyful_souls.pdf,Enchanted Pebble Painting for Joyful Souls,Pebbles McMirth,Cotswolds,75
+class_184_laughter_yoga_with_giggles_mcgee.pdf,Laughter Yoga with Giggles McGee,Giggles McGee,Canterbury,75
+class_185_fantastical_yarnspinning_spinning_tales_and_fibers.pdf,Fantastical Yarnspinning: Spinning Tales and Fibers,Professor Twiddlethimble,Chester,80
+class_186_the_joyful_jumble_patchwork_of_positivity.pdf,The Joyful Jumble: Patchwork of Positivity,Miss Tessa Tapestry,Devon,75
+class_187_the_art_of_jolly_juggling_for_joyful_minds.pdf,The Art of Jolly Juggling for Joyful Minds,Professor Tossington,Brighton,75
+class_188_cornish_pixie_pottery.pdf,Cornish Pixie Pottery,Ceramic Cedric,Cornwall,65
+class_189_victorian_pumpkin_carving_from_sombre_to_splendid.pdf,Victorian Pumpkin Carving: From Sombre to Splendid,Professor Gourdly,Glasgow,75
+class_190_cuddly_creature_knitting__magical_yarn_tales.pdf,Cuddly Creature Knitting & Magical Yarn Tales,Lola Loom,Cotswolds,75
+class_191_enchanted_viking_beard_braiding.pdf,Enchanted Viking Beard Braiding,Bjorn Tanglebeard,Inverness,75
+class_192_ye_olde_quill_dancing.pdf,Ye Olde Quill Dancing,Master Quibble Quillworthy,Stratford-upon-Avon,85
+class_193_unicorn_blanket_weaving.pdf,Unicorn Blanket Weaving,Sir Weftalot,Scottish Highlands,95
+class_194_whimsical_wand_weaving.pdf,Whimsical Wand Weaving,Professor Thistlewood,Northumberland,85
+class_195_whimsical_windchime_wizardry.pdf,Whimsical Windchime Wizardry,Breeze Bellamy,Harrogate,75
+class_196_bubble_om_the_art_of_mindful_bubble_blowing.pdf,Bubble Om: The Art of Mindful Bubble Blowing,Professor B. Bubbly,Devon,45
+class_197_goblet_of_giggles_medieval_merriment_crafting.pdf,Goblet of Giggles: Medieval Merriment Crafting,Sir Lancelot Laughalot,Stratford-upon-Avon,95
+class_198_bubble_meditation_and_zen_puddle_jumping.pdf,Bubble Meditation and Zen Puddle Jumping,Mr. Bubbles McJoy,Northumberland,75
+class_199_expressive_umbrella_painting_for_the_eccentric_soul.pdf,Expressive Umbrella Painting for the Eccentric Soul,Drizzle McCanvas,Northumberland,65
+class_200_the_art_of_joyful_biscuit_meditation.pdf,The Art of Joyful Biscuit Meditation,Mr. Crumbleton,Northumberland,50
+class_201_enchanted_broomstick_carving_and_aerodynamics.pdf,Enchanted Broomstick Carving and Aerodynamics,Professor Whittlingford Sweep,Exeter,75
+class_202_laughter_yoga_giggling_through_wellness.pdf,Laughter Yoga: Giggling Through Wellness,Chuckles McJoy,Norfolk,65
+class_203_expressive_origami_orchestra.pdf,Expressive Origami Orchestra,Professor Foldsworth,Stratford-upon-Avon,75
+class_204_enchanted_leaf_weaving_and_whispering.pdf,Enchanted Leaf Weaving and Whispering,Lady Fern Foliage,Oxford,70
+class_205_the_art_of_gentle_chaos_management.pdf,The Art of Gentle Chaos Management,Professor Jovial Jumble,Harrogate,75
+class_206_the_art_of_wind_chasing_aerial_adventures.pdf,The Art of Wind Chasing: Aerial Adventures,Gustave Breezewalker,Chester,75
+class_207_magical_felted_creature_companions.pdf,Magical Felted Creature Companions,Professor Woolly Wickers,Scottish Highlands,75
+class_208_enchanted_hedgehog_foraging_and_feasts.pdf,Enchanted Hedgehog Foraging and Feasts,Professor Pricklesworth,Harrogate,75
+class_209_magical_moss_mosaics.pdf,Magical Moss Mosaics,Professor Lichenbottom,Edinburgh,85
+class_210_jolly_juggling_with_jebediah_jellybean.pdf,Jolly Juggling with Jebediah Jellybean,Jebediah Jellybean,Glasgow,75
+class_211_bubble_therapy__whirligig_wind-down.pdf,Bubble Therapy & Whirligig Wind-down,Dr. Bubbly Fizzlesworth,York,95
