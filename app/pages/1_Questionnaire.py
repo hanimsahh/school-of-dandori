@@ -12,6 +12,13 @@ from openai import OpenAI
 # =========================================================
 # PAGE SETUP & WELLBEING THEME
 # =========================================================
+st.markdown("""
+<div style="text-align:center;">
+<iframe src="https://lottie.host/embed/42fb9e10-dbad-4a6f-8eb2-2263a6cdc2b4/xYOZwx81cZ.lottie"
+style="width:600px;height:200px;border:none;"></iframe>
+</div>
+""", unsafe_allow_html=True)
+
 
 st.set_page_config(page_title="School of Dandori | Sanctuary", layout="wide", page_icon="🌿")
 
@@ -70,9 +77,6 @@ h1, h2, h3 {
 # CONFIG & DATA
 # =========================================================
 
-# Ensure your API key is set in Streamlit secrets
-# .streamlit/secrets.toml should have OPENROUTER_API_KEY under [default] in Streamlit 1.0.
-
 # DANDORI WELLBEING QUESTIONS
 QUESTIONS = [
     "How are you feeling today? What kind of energy are you looking to cultivate?",
@@ -122,6 +126,7 @@ def load_dandori_data():
 # =========================================================
 # OPENROUTER INTEGRATION
 # =========================================================
+
 
 def get_openrouter_client():
     if "OPENROUTER_API_KEY" not in st.secrets:
@@ -237,43 +242,90 @@ Course options:
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-        {"role": "assistant", "content": "Welcome to the Sanctuary. Let's find a path that suits your soul. " + QUESTIONS[0]}
+        {
+            "role": "assistant",
+            "content": "Welcome to the Sanctuary. Let's find a path that suits your soul.\n\n" + QUESTIONS[0]
+        }
     ]
+
 if "question_index" not in st.session_state:
     st.session_state.question_index = 0
+
 if "qa_pairs" not in st.session_state:
     st.session_state.qa_pairs = []
+
 if "criteria" not in st.session_state:
     st.session_state.criteria = None
 
-# --- MAIN UI ---
+
+# ═══════════════════════════════════════════════════════════════════
+
 st.title("🍃 The School of Dandori")
 st.subheader("Personalised Path Finder")
 
 df = load_dandori_data()
 
+# Avatar (GIF version)
+ARTHUR_AVATAR = "Aurthor_chatbot.gif"
+
+# ═══════════════════════════════════════════════════════════════════
+for msg in st.session_state.chat_history:
+    if msg["role"] == "assistant":
+        with st.chat_message("assistant", avatar=ARTHUR_AVATAR):
+            st.markdown(msg["content"])
+    else:
+        with st.chat_message("user"):
+            st.write(msg["content"])
+
+
+# ═══════════════════════════════════════════════════════════════════
+# USER INPUT
+# ═══════════════════════════════════════════════════════════════════
 user_input = st.chat_input("Share your thoughts...")
 
 if user_input:
-    st.session_state.chat_history.append({"role": "user", "content": user_input})
-    
+    # Save user message
+    st.session_state.chat_history.append({
+        "role": "user",
+        "content": user_input
+    })
+
+    # 🧠 QUESTION FLOW
     if st.session_state.criteria is None:
+
         current_q = QUESTIONS[st.session_state.question_index]
         st.session_state.qa_pairs.append((current_q, user_input))
         st.session_state.question_index += 1
 
+        # ➡️ Ask next question
         if st.session_state.question_index < len(QUESTIONS):
             next_q = QUESTIONS[st.session_state.question_index]
-            st.session_state.chat_history.append({"role": "assistant", "content": next_q})
+
+            st.session_state.chat_history.append({
+                "role": "assistant",
+                "content": next_q
+            })
+
+        # ✅ Finished questions → recommend
         else:
-            st.session_state.criteria = interview_to_course_criteria(st.session_state.qa_pairs)
-            st.session_state.chat_history.append({"role": "assistant", "content": "Thank you! Processing your answers to recommend the best course for you..."})
+            st.session_state.criteria = interview_to_course_criteria(
+                st.session_state.qa_pairs
+            )
 
-            recommendation_text = recommend_courses(st.session_state.criteria, df)
-            st.session_state.chat_history.append({"role": "assistant", "content": recommendation_text})
+            st.session_state.chat_history.append({
+                "role": "assistant",
+                "content": "Thank you. I'm reflecting on your answers to find the right path for you..."
+            })
 
-for msg in st.session_state.chat_history:
-    with st.chat_message(msg["role"]):
-        st.write(msg["content"])
+            recommendation_text = recommend_courses(
+                st.session_state.criteria, df
+            )
 
+            st.session_state.chat_history.append({
+                "role": "assistant",
+                "content": recommendation_text
+            })
+
+    # 🔄 Rerun to refresh chat immediately
+    st.rerun()
 # (...) any other content here as needed
