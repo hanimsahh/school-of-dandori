@@ -124,7 +124,7 @@ if "user_id" not in st.session_state:
                 st.success(f"Welcome home, {user_input}. Take a deep breath.")
                 st.rerun()
     with col2:
-        st.image("Screenshot 2026-03-27 at 16.45.21.png")
+        st.image("app/Screenshot 2026-03-27 at 16.45.21.png")
     st.stop()
 
 user_id = st.session_state.user_id
@@ -268,10 +268,7 @@ else:
 
 with st.container():
     st.write("---")
-    st.header("Get in Touch with me!")
-    st.write("##")
-
-
+    st.header("Get in Touch with Arthur!")
     contact_form= """
     <form action="https://formsubmit.co/arthur@email.com" method="POST">
      <input type="hidden" name"_captcha" value="false">
@@ -281,15 +278,14 @@ with st.container():
      <button type="submit">Send</button>
 </form>
 """
-left_column, right_column = st.columns(2)
+left_column, right_column = st.columns([2,1])
 with left_column:
     st.markdown(contact_form, unsafe_allow_html=True)
 with right_column:
     st.markdown('<iframe src="https://lottie.host/embed/51d9c5d3-d3a4-4c13-9569-afef8299a530/smBgQyQ8E4.lottie"></iframe>', unsafe_allow_html=True)
-
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-local_css("style/style.css")
+local_css("app/style/style.css")
 
