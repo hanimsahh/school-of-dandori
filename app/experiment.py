@@ -3,6 +3,7 @@ from streamlit_lottie import st_lottie
 import streamlit as st
 import pandas as pd
 import sqlite3
+import os
 
 # ═══════════════════════════════════════════════════════════════════
 # PAGE CONFIGURATION
@@ -35,7 +36,7 @@ h1, h2, h3 {
 .main {
     background: linear-gradient(180deg, #F9F6EE 0%, #FBF9F3 100%);
 }
-
+pen
 /* Remove Streamlit Branding */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
@@ -258,14 +259,21 @@ hr {
 # AUTHENTICATION
 # ═══════════════════════════════════════════════════════════════════
 if "user_id" not in st.session_state:
+    # We use the middle column (col2) for our content
     col1, col2, col3 = st.columns([1, 2, 1])
+    
     with col2:
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.image("Screenshot 2026-03-27 at 16.45.21.png", width=220)
+        sub_col1, sub_col2, sub_col3 = st.columns([1, 2, 1])
+        with sub_col2:
+            st.image("app/Screenshot 2026-03-27 at 16.45.21.png", width=220)
+        
+        # --- HEADER & TEXT ---
         st.markdown("<h1 style='text-align: center; font-family: Quicksand; color: #344E41;'>School of Dandori</h1>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center; color: #6B705C; font-size: 1.1rem;'>The philosophy of the school is that we should enjoy our time and look after our wellbeing.</p>", unsafe_allow_html=True)
         st.markdown("<br>", unsafe_allow_html=True)
         
+        # --- INPUT & BUTTON ---
         user_input = st.text_input("How shall we address you?", placeholder="Enter your name...", label_visibility="collapsed")
         
         if st.button("Enter the Sanctuary", use_container_width=True):
@@ -282,7 +290,8 @@ user_id = st.session_state.user_id
 # ═══════════════════════════════════════════════════════════════════
 @st.cache_data
 def load_courses():
-    conn = sqlite3.connect("../database/db.sqlite")
+    db_path = os.path.join(os.path.dirname(__file__), "../database/db.sqlite")
+    conn = sqlite3.connect(db_path)
     df = pd.read_sql_query("SELECT * FROM courses", conn)
     conn.close()
     
@@ -309,7 +318,7 @@ with st.sidebar:
     # Logo
     col1, col2, col3 = st.columns([0.5, 2, 0.5])
     with col2:
-        st.image("Screenshot 2026-03-27 at 16.45.21.png", use_container_width=True)
+        st.image("app/Screenshot 2026-03-27 at 16.45.21.png", use_container_width=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("## Filters")
@@ -361,7 +370,16 @@ with col1:
     """, unsafe_allow_html=True)
 
 with col2:
-    st.markdown('<iframe src="https://lottie.host/embed/42fb9e10-dbad-4a6f-8eb2-2263a6cdc2b4/xYOZwx81cZ.lottie" style="width:100%;height:200px;border:none;background:transparent;" allowfullscreen></iframe>', unsafe_allow_html=True)
+    st.markdown("""
+    <a href="/Chatbot" target="_self" style="text-decoration: none;">
+        <iframe src="https://lottie.host/embed/42fb9e10-dbad-4a6f-8eb2-2263a6cdc2b4/xYOZwx81cZ.lottie"
+        style="width:100%;height:300px;border:none;background:transparent;cursor:pointer;"
+        allowfullscreen></iframe>
+    </a>
+    """, unsafe_allow_html=True)
+
+    if st.button("💬 Open Chatbot"):
+        st.switch_page("pages/1_Questionnaire.py")
 
 # ═══════════════════════════════════════════════════════════════════
 # SEARCH SECTION
@@ -488,4 +506,5 @@ def local_css(file_name):
     except:
         pass
 
-local_css("style/style.css")
+css_path = os.path.join(os.path.dirname(__file__), "style/style.css")
+local_css(css_path)
