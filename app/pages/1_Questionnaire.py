@@ -266,9 +266,10 @@ st.subheader("Personalised Path Finder")
 df = load_dandori_data()
 
 # Avatar (GIF version)
-ARTHUR_AVATAR = "chatbot.gif"
+ARTHUR_AVATAR = "robot.gif"
 
 # ═══════════════════════════════════════════════════════════════════
+
 for msg in st.session_state.chat_history:
     if msg["role"] == "assistant":
         with st.chat_message("assistant", avatar=ARTHUR_AVATAR):
