@@ -14,7 +14,6 @@ def load_lottieurl(url):
 
 
 # --- WELLBEING THEME STYLING ---
-# Using a palette of Sage (#A3B18A), Cream (#F9F6EE), and Earth (#344E41)
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap');
@@ -33,15 +32,38 @@ h1, h2, h3 {
     letter-spacing: -0.5px;
 }
 
-/* Softening the Cards */
-.stMarkdown div[data-styled-content="true"] > div {
-    background-color: rgba(255, 255, 255, 0.7);
+/* Search Section Styling */
+.stTextInput > div > div {
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid #A3B18A;
+}
+
+.stTextInput input {
+    font-size: 1.1rem;
+    padding: 12px;
+}
+
+/* Info box styling */
+div[data-testid="stMarkdownContainer"] div[data-testid="stMarkdownContainer"] p {
+    font-size: 1rem;
+}
+
+/* Course Card Containers */
+div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] {
+    background-color: white;
     padding: 24px;
-    border-radius: 20px;
-    border: 1px solid rgba(163, 177, 138, 0.2);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border-radius: 16px;
+    border: 2px solid rgba(163, 177, 138, 0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     margin-bottom: 20px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"]:hover {
+    border-color: #A3B18A;
+    box-shadow: 0 4px 16px rgba(163, 177, 138, 0.25);
+    transform: translateY(-2px);
 }
 
 /* Button Styling */
@@ -66,8 +88,20 @@ h1, h2, h3 {
 section[data-testid="stSidebar"] {
     background-color: #F9F6EE;
 }
+
+section[data-testid="stSidebar"] > div {
+    padding-top: 2rem;
+}
 </style>
 """, unsafe_allow_html=True)
+
+# --- SIDEBAR LOGO ---
+with st.sidebar:
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        st.image("Screenshot 2026-03-27 at 16.45.21.png", use_container_width=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
 # --- MOCK FUNCTIONS ---
 def create_user_if_not_exists(user_id):
@@ -95,30 +129,35 @@ if "user_id" not in st.session_state:
 
 user_id = st.session_state.user_id
 
-# --- MOCK DATA ---
-data = [
-    {
-        "Class ID": "CLASS_1893",
-        "Title": "Enchanted Tartan Weaving",
-        "Instructor": "Professor Plaid McLoom",
-        "Location": "Scottish Highlands",
-        "Cost": 85,
-        "Type": "Craft",
-        "Description": "Find your rhythm at the loom. A meditative practice connecting thread, history, and heart.",
-        "Skills": ["Mindfulness", "Patience", "Artistry"]
-    },
-    {
-        "Class ID": "CLASS_2041",
-        "Title": "The Art of Slow Pottery",
-        "Instructor": "Ada Clayworth",
-        "Location": "Leeds Studio",
-        "Cost": 120,
-        "Type": "Pottery",
-        "Description": "Feel the earth between your fingers. A weekend dedicated to the tactile joy of creation.",
-        "Skills": ["Focus", "Presence", "Tactile Healing"]
-    }
-]
-df = pd.DataFrame(data)
+# --- LOAD DATA FROM DATABASE ---
+import sqlite3
+
+# Connect to the database
+conn = sqlite3.connect("../database/db.sqlite")
+
+# Read all courses from the database
+df = pd.read_sql_query("SELECT * FROM courses", conn)
+conn.close()
+
+# Add the columns that the website UI expects
+df = df.rename(columns={
+    'file': 'Class ID',
+    'title': 'Title',
+    'instructor': 'Instructor',
+    'location': 'Location',
+    'cost': 'Cost'
+})
+
+# Add default values for columns we don't have yet
+df['Type'] = 'Wellbeing'  # All courses are wellbeing courses
+df['Description'] = df['Title'].apply(lambda x: f"A mindful {x.lower()} experience")
+df['Skills'] = df.apply(lambda x: ['Mindfulness', 'Creativity', 'Wellbeing'], axis=1)
+
+print(f"📊 Loaded {len(df)} courses from database!")
+
+
+
+
 
 # --- HEADER ---
 col1, col2 = st.columns([1, 1])
@@ -150,32 +189,81 @@ if selected_skills:
     filtered_df = filtered_df[filtered_df["Skills"].apply(lambda s: any(x in s for x in selected_skills))]
 
 # --- CONTENT AREA ---
-search_query = st.text_input("🔍 Search for an activity...", placeholder="e.g., 'quiet', 'weaving', 'nature'")
+st.markdown("### 🔍 Search for an Experience")
+search_query = st.text_input("", placeholder="e.g., 'pottery', 'yoga', 'weaving'", label_visibility="collapsed")
 
 if search_query:
     filtered_df = filtered_df[filtered_df.apply(lambda row: search_query.lower() in str(row).lower(), axis=1)]
 
-st.divider()
+# Show helpful tip right under search bar
+if location == "Everywhere" and course_type == "All Styles" and not search_query:
+    st.info("💡 Showing featured courses. Use filters on the left or search above to explore more.")
 
-if filtered_df.empty:
+st.markdown("---")
+
+# --- DISPLAY LOGIC ---
+show_featured = (
+    location == "Everywhere" and 
+    course_type == "All Styles" and 
+    max_cost == 200 and 
+    not selected_skills and 
+    not search_query
+)
+
+# Determine which courses to show
+if show_featured and not filtered_df.empty:
+    st.markdown("## ✨ Featured Experiences")
+    st.markdown("<br>", unsafe_allow_shtml=True)
+    display_df = filtered_df.sample(n=min(5, len(filtered_df)))
+else:
+    display_df = filtered_df
+
+# --- COURSE CARD DISPLAY ---
+if display_df.empty:
     st.info("The path is quiet today. Perhaps try a different search? 🌿")
 else:
-    for _, row in filtered_df.iterrows():
-        with st.container():
-            st.markdown(f"""
-            <div style="margin-bottom: 25px;">
-                <h2 style="margin-bottom: 5px;">{row['Title']}</h2>
-                <p style="color: #6B705C; font-style: italic;">Guided by {row['Instructor']} • {row['Location']}</p>
-                <p>{row['Description']}</p>
-                <p style="font-size: 0.9em; color: #344E41;"><b>Focusing on:</b> {", ".join(row['Skills'])}</p>
-                <h4 style="color: #A3B18A;">£{row['Cost']}</h4>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            if st.button(f"Reserve a Spot: {row['Title']}", key=row['Class ID']):
-                st.balloons()
-                st.success("Your journey has been noted. We'll see you there. ✨")
+    # Display in 2-column layout
+    for i in range(0, len(display_df), 2):
+        cols = st.columns(2, gap="medium")
+        
+        for col_idx in range(2):
+            if i + col_idx < len(display_df):
+                row = display_df.iloc[i + col_idx]
+                
+                with cols[col_idx]:
+                    # Card container with border
+                    with st.container(border=True):
+                        # Title
+                        st.markdown(f"### {row['Title']}")
+                        
+                        # Instructor and location
+                        st.markdown(f"<p style='text-align: center; color: #6B705C; font-style: italic;'>👤 {row['Instructor']}</p>", unsafe_allow_html=True)
+                        st.markdown(f"<p style='text-align: center; color: #6B705C; font-style: italic;'>📍 {row['Location']}</p>", unsafe_allow_html=True)
+                        
+                        st.markdown("<br>", unsafe_allow_html=True)
+                        
+                        # Description
+                        st.write(row['Description'][:120] + "...")
+                        
+                        st.markdown("<br>", unsafe_allow_html=True)
+                        
+                        # Skills
+                        skills_text = " • ".join(row['Skills'][:3])
+                        st.markdown(f"<p style='text-align: center; background: #F9F6EE; padding: 10px; border-radius: 8px; color: #588157;'><b>Focus:</b> {skills_text}</p>", unsafe_allow_html=True)
+                        
+                        st.markdown("<br>", unsafe_allow_html=True)
+                        
+                        # Price (centered)
+                        st.markdown(f"<h2 style='text-align: center; color: #A3B18A; margin: 10px 0;'>£{row['Cost']}</h2>", unsafe_allow_html=True)
+                        
+                        # Reserve button
+                        if st.button("Reserve Your Spot", key=row['Class ID'], use_container_width=True):
+                            st.balloons()
+                            st.success(f"✨ Your journey to {row['Title']} has been noted!")
+        
+        st.markdown("<br>", unsafe_allow_html=True)
 
+        
 # --- Contact ---
 
 with st.container():

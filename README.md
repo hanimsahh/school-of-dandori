@@ -1,32 +1,45 @@
-# 🎓 School of Dandori — Data Pipeline & Search Interface
+# 🎓 School of Dandori — Course Discovery System
 
 ## 📌 Overview
 
-This project implements Phase 1 of the School of Dandori platform, transforming 211 unstructured course PDFs into a structured, searchable system.
+This project delivers Phase 1 of the School of Dandori platform: transforming unstructured course PDFs into a structured, searchable system with a working user interface.
 
-The solution includes:
-
-* Deterministic data extraction from PDFs
-* Data validation and cleaning
-* A simple Streamlit-based search interface
-
-The result is a fully functional pipeline that enables course discovery without manual PDF lookup.
+The system eliminates manual PDF lookup by enabling users to discover courses through a clean and interactive interface.
 
 ---
 
-## ⚙️ System Pipeline
+## 🚀 What This Project Does
 
-The system follows a three-step pipeline:
-
-**1. Extraction → 2. Validation → 3. Interface**
-
-* PDFs are parsed into structured data
-* Data is cleaned and standardised
-* A user interface allows searching and filtering
+* Extracts structured data from 211 PDF course files
+* Cleans and validates the data for consistency
+* Stores the data in a structured format (CSV + SQLite)
+* Provides a Streamlit-based interface for searching and filtering courses
 
 ---
 
-## 📊 Extracted Data Fields
+## 🧠 System Architecture
+
+The project is organised into three main layers:
+
+### 1. Data Processing
+
+* `extract.py` → Parses PDFs into structured data
+* `clean.py` → Validates and standardises the dataset
+
+### 2. Data Storage
+
+* `courses.csv` → Flat structured dataset
+* `database/db.sqlite` → Lightweight database
+* `schema.sql` → Database schema definition
+
+### 3. Application Layer
+
+* `app/main.py` → Streamlit application
+* Enables search, filtering, and browsing
+
+---
+
+## 📊 Data Model
 
 Each course includes:
 
@@ -34,49 +47,44 @@ Each course includes:
 * **title** — Course title
 * **instructor** — Instructor name
 * **location** — Course location
-* **cost** — Course price (numeric)
+* **cost** — Course price (integer)
 
 ---
 
-## 🧹 Data Validation & Cleaning
+## 🔍 Features
 
-To ensure high data quality:
+### Data Pipeline
 
-* All 211 PDFs successfully processed
-* Missing values removed
-* Cost converted to numeric format
-* Multi-word locations handled correctly (e.g. *Scottish Highlands*)
-* Known edge cases manually corrected
-* Final dataset verified for consistency
+* Deterministic PDF parsing (no AI used)
+* Structured extraction across all 211 files
+* Data cleaning and validation
+* Edge-case handling
 
----
+### Search Interface
 
-## 🔍 Search Interface (Streamlit)
+* Filter by location
+* Filter by price
+* Keyword search
+* Instant results display
 
-A lightweight Streamlit application was developed to enable:
+### Storage
 
-* Filtering by **location**
-* Filtering by **cost range**
-* Keyword-based **search**
-* Instant display of matching courses
-
-This removes the need for manual PDF searching and enables self-service discovery.
+* CSV for simplicity
+* SQLite for scalability and querying
 
 ---
 
 ## 📁 Project Structure
 
-```id="struct01"
+```id="struct02"
 school-of-dandori/
 │
-├── data/                # PDF files
-├── scripts/
-│   └── extract.py       # Extraction + validation
+├── app/                # Streamlit application
+├── data/               # PDF files
+├── database/           # SQLite DB + schema
+├── scripts/            # Extraction & cleaning scripts
 │
-├── app/
-│   └── main.py          # Streamlit interface
-│
-├── courses.csv          # Structured dataset
+├── courses.csv         # Final dataset
 ├── requirements.txt
 └── README.md
 ```
@@ -87,19 +95,25 @@ school-of-dandori/
 
 ### 1. Install dependencies
 
-```id="run01"
+```id="run11"
 pip install -r requirements.txt
 ```
 
-### 2. Run extraction pipeline
+### 2. Run data extraction
 
-```id="run02"
+```id="run12"
 python scripts/extract.py
 ```
 
-### 3. Launch Streamlit app
+### 3. (Optional) Clean data
 
-```id="run03"
+```id="run13"
+python scripts/clean.py
+```
+
+### 4. Launch the app
+
+```id="run14"
 streamlit run app/main.py
 ```
 
@@ -107,34 +121,33 @@ streamlit run app/main.py
 
 ## ✅ Results
 
-* 211 / 211 courses extracted
-* 0 missing values in final dataset
-* Fully structured and validated data
-* Functional search interface for course discovery
+* 211 / 211 PDFs successfully processed
+* Clean, structured dataset with 0 missing values
+* Functional search interface
+* Reduced manual lookup to zero
 
 ---
 
-## 🚧 Constraints & Design Decisions
+## ⚠️ Constraints
 
-* Fully deterministic approach (no generative AI used)
-* Focus on reliability and reproducibility
-* Lightweight tools to ensure low maintenance
-* Designed for easy integration into future systems
+* No generative AI used (fully deterministic system)
+* Designed for low maintenance and low cost
+* Built to support future scalability
 
 ---
 
-## 👥 Contribution
+## 👥 Team Contribution
 
 This project was developed as part of a group collaboration.
 
-Primary contributions in this component:
+Key contributions in this component:
 
 * Data extraction pipeline
 * Data validation and cleaning
-* Structured dataset generation
+* Structured dataset creation
 
 ---
 
 ## 🎯 Outcome
 
-The system eliminates manual PDF searching and establishes a scalable foundation for future features such as database integration and recommendation systems.
+The system transforms a manual, time-intensive workflow into an efficient, scalable solution, enabling independent course discovery and laying the foundation for future enhancements.
