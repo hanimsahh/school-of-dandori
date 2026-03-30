@@ -266,7 +266,7 @@ st.subheader("Personalised Path Finder")
 df = load_dandori_data()
 
 # Avatar (GIF version)
-ARTHUR_AVATAR = "Aurthor_chatbot.gif"
+ARTHUR_AVATAR = "chatbot.gif"
 
 # ═══════════════════════════════════════════════════════════════════
 for msg in st.session_state.chat_history:
