@@ -6,16 +6,19 @@ import sqlite3
 import os
 import json
 
-SAVE_FILE = "bookings.json"
+def get_save_file(user):
+    return f"bookings_{user}.json"
 
-def load_bookings():
-    if os.path.exists(SAVE_FILE):
-        with open(SAVE_FILE, "r") as f:
+def load_bookings(user):
+    file = get_save_file(user)
+    if os.path.exists(file):
+        with open(file, "r") as f:
             return json.load(f)
     return []
 
-def save_bookings(data):
-    with open(SAVE_FILE, "w") as f:
+def save_bookings(user, data):
+    file = get_save_file(user)
+    with open(file, "w") as f:
         json.dump(data, f)
 
 LOG_FILE = "booking_log.json"
@@ -361,7 +364,7 @@ df = load_courses()
 # SESSION STATE (WITH PERSISTENCE)
 # ═══════════════════════════════════════════════════════════════════
 if "booked_courses" not in st.session_state:
-    st.session_state.booked_courses = load_bookings()
+    st.session_state.booked_courses = load_bookings(user_id)
 
 if "panel_open" not in st.session_state:
     st.session_state.panel_open = False
@@ -379,12 +382,12 @@ def add_course(course, paid=False):
         course_entry = course.copy()
         course_entry["paid"] = paid
         st.session_state.booked_courses.append(course)
-        save_bookings(st.session_state.booked_courses)
+        save_bookings(user_id, st.session_state.booked_courses)
 
 
 def remove_course(index):
     st.session_state.booked_courses.pop(index)
-    save_bookings(st.session_state.booked_courses)
+    save_bookings(user_id, st.session_state.booked_courses)
 
 if "booking_step" not in st.session_state:
     st.session_state.booking_step = None
@@ -485,7 +488,7 @@ if st.session_state.booking_step == "form":
                     "paid": is_paid
                 })
 
-            save_bookings(st.session_state.booked_courses)
+            save_bookings(user_id, st.session_state.booked_courses)
             log_booking({"course": c, "details": st.session_state.booking_details, "paid": is_paid}, st.session_state.user_id)
 
             st.session_state.booking_step = "confirmed"
