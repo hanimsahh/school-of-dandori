@@ -405,6 +405,14 @@ if st.session_state.booking_step == "form":
     st.markdown(f"## Booking: {c['title']}")
     st.markdown(f"{c['location']} · {c['cost']}")
 
+    # ✅ PAYMENT
+    st.markdown("##### Payment method")
+    payment = st.radio(
+        "How would you like to pay?",
+        ["💳 Pay now (card)", "🏛️ Pay at the counter"],
+        help="Payment must be completed before the course starts."
+    )
+
     with st.form("booking_form"):
         first = st.text_input("First name")
         email = st.text_input("Email")
@@ -412,37 +420,55 @@ if st.session_state.booking_step == "form":
         date = st.date_input("Preferred date")
         participants = st.selectbox("Participants", [1,2,3,4])
 
-        payment = st.radio(
-            "Payment method",
-            ["💳 Pay now (card)", "🏛️ Pay at the counter"]
-        )
+
+        card_number = card_expiry = card_name = card_cvv = None
 
         if payment == "💳 Pay now (card)":
-            card = st.text_input("Card number")
+            st.markdown("##### Card details")
+
+            cc1, cc2 = st.columns([3, 1])
+            with cc1:
+                card_number = st.text_input("Card number", placeholder="1234 5678 9012 3456", max_chars=19)
+            with cc2:
+                card_expiry = st.text_input("Expiry", placeholder="MM/YY", max_chars=5)
+
+            cc3, cc4 = st.columns([3, 1])
+            with cc3:
+                card_name = st.text_input("Name on card")
+            with cc4:
+                card_cvv = st.text_input("CVV", placeholder="123", max_chars=3, type="password")
+
+        else:
+            st.info("You'll pay at the venue. Please arrive 15 minutes early.")
 
         submit = st.form_submit_button("Confirm booking")
         back = st.form_submit_button("← Back")
 
+    # ⬇️ FORM DIŞI (çok önemli)
     if back:
         st.session_state.booking_step = None
         st.rerun()
 
     if submit:
         if not first or not email:
-            st.warning("Please fill in required fields")
+            st.warning("Please fill in your name and email to continue.")
+
+        elif payment == "💳 Pay now (card)" and (
+            not card_number or not card_expiry or not card_cvv or not card_name
+        ):
+            st.warning("Please complete your card details.")
+
         else:
             st.session_state.booking_details = {
                 "name": first,
                 "email": email,
                 "date": str(date),
                 "participants": participants,
-                "payment": payment
+                "payment": "Paid by card" if payment == "💳 Pay now (card)" else "Pay at counter"
             }
 
-            # Determine if paid
             is_paid = payment == "💳 Pay now (card)"
 
-            # Check if course already exists in booked_courses
             updated = False
             for b in st.session_state.booked_courses:
                 booked_course = b["course"] if "course" in b else b
@@ -453,22 +479,21 @@ if st.session_state.booking_step == "form":
                     break
 
             if not updated:
-                # Add new booking
                 st.session_state.booked_courses.append({
                     "course": c,
                     "details": st.session_state.booking_details,
                     "paid": is_paid
                 })
 
-            # Save and log
             save_bookings(st.session_state.booked_courses)
             log_booking({"course": c, "details": st.session_state.booking_details, "paid": is_paid}, st.session_state.user_id)
 
             st.session_state.booking_step = "confirmed"
-            st.session_state.panel_open = True # Auto-open panel
+            st.session_state.panel_open = True
             st.balloons()
-            st.success("✨ Your booking has been confirmed!")  
+            st.success("✨ Your booking has been confirmed!")
             st.rerun()
+
     st.stop()
 
 # =========================================================
