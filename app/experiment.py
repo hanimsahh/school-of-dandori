@@ -4,7 +4,53 @@ import streamlit as st
 import pandas as pd
 import sqlite3
 import os
+import json
 
+SAVE_FILE = "bookings.json"
+
+def load_bookings():
+    if os.path.exists(SAVE_FILE):
+        with open(SAVE_FILE, "r") as f:
+            return json.load(f)
+    return []
+
+def save_bookings(data):
+    with open(SAVE_FILE, "w") as f:
+        json.dump(data, f)
+
+LOG_FILE = "booking_log.json"
+
+from datetime import datetime
+
+def load_log():
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "r") as f:
+            return json.load(f)
+    return []
+
+def save_log(data):
+    with open(LOG_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+def log_booking(course, user):
+    log = load_log()
+
+    # ✅ handle both old + new formats
+    if "course" in course:
+        c = course["course"]
+    else:
+        c = course
+
+    log_entry = {
+        "user": user,
+        "title": c["title"],
+        "location": c["location"],
+        "cost": c["cost"],
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+    log.append(log_entry)
+    save_log(log)
 # ═══════════════════════════════════════════════════════════════════
 # PAGE CONFIGURATION
 # ═══════════════════════════════════════════════════════════════════
@@ -36,7 +82,6 @@ h1, h2, h3 {
 .main {
     background: linear-gradient(180deg, #F9F6EE 0%, #FBF9F3 100%);
 }
-pen
 /* Remove Streamlit Branding */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
@@ -311,6 +356,184 @@ def load_courses():
 
 df = load_courses()
 
+
+# ═══════════════════════════════════════════════════════════════════
+# SESSION STATE (WITH PERSISTENCE)
+# ═══════════════════════════════════════════════════════════════════
+if "booked_courses" not in st.session_state:
+    st.session_state.booked_courses = load_bookings()
+
+if "panel_open" not in st.session_state:
+    st.session_state.panel_open = False
+
+
+def add_course(course, paid=False):
+    titles = [
+        c["course"]["title"] if "course" in c else c["title"]
+        for c in st.session_state.booked_courses
+    ]
+
+    new_title = course["course"]["title"] if "course" in course else course["title"]
+
+    if new_title not in titles:
+        course_entry = course.copy()
+        course_entry["paid"] = paid
+        st.session_state.booked_courses.append(course)
+        save_bookings(st.session_state.booked_courses)
+
+
+def remove_course(index):
+    st.session_state.booked_courses.pop(index)
+    save_bookings(st.session_state.booked_courses)
+
+if "booking_step" not in st.session_state:
+    st.session_state.booking_step = None
+
+if "booking_course" not in st.session_state:
+    st.session_state.booking_course = None
+
+if "booking_details" not in st.session_state:
+    st.session_state.booking_details = {}
+
+# =========================================================
+# BOOKING FLOW (same as Questionnaire)
+# =========================================================
+
+if st.session_state.booking_step == "form":
+    c = st.session_state.booking_course
+
+    st.markdown(f"## Booking: {c['title']}")
+    st.markdown(f"{c['location']} · {c['cost']}")
+
+    with st.form("booking_form"):
+        first = st.text_input("First name")
+        email = st.text_input("Email")
+
+        date = st.date_input("Preferred date")
+        participants = st.selectbox("Participants", [1,2,3,4])
+
+        payment = st.radio(
+            "Payment method",
+            ["💳 Pay now (card)", "🏛️ Pay at the counter"]
+        )
+
+        if payment == "💳 Pay now (card)":
+            card = st.text_input("Card number")
+
+        submit = st.form_submit_button("Confirm booking")
+        back = st.form_submit_button("← Back")
+
+    if back:
+        st.session_state.booking_step = None
+        st.rerun()
+
+    if submit:
+        if not first or not email:
+            st.warning("Please fill in required fields")
+        else:
+            st.session_state.booking_details = {
+                "name": first,
+                "email": email,
+                "date": str(date),
+                "participants": participants,
+                "payment": payment
+            }
+
+            # Determine if paid
+            is_paid = payment == "💳 Pay now (card)"
+
+            # Check if course already exists in booked_courses
+            updated = False
+            for b in st.session_state.booked_courses:
+                booked_course = b["course"] if "course" in b else b
+                if booked_course["title"] == c["title"]:
+                    b["details"] = st.session_state.booking_details
+                    b["paid"] = is_paid
+                    updated = True
+                    break
+
+            if not updated:
+                # Add new booking
+                st.session_state.booked_courses.append({
+                    "course": c,
+                    "details": st.session_state.booking_details,
+                    "paid": is_paid
+                })
+
+            # Save and log
+            save_bookings(st.session_state.booked_courses)
+            log_booking({"course": c, "details": st.session_state.booking_details, "paid": is_paid}, st.session_state.user_id)
+
+            st.session_state.booking_step = "confirmed"
+            st.session_state.panel_open = True # Auto-open panel
+            st.balloons()
+            st.success("✨ Your booking has been confirmed!")  
+            st.rerun()
+    st.stop()
+
+# =========================================================
+# CONFIRMED BOOKING DISPLAY
+# =========================================================
+if st.session_state.booking_step == "confirmed":
+    c = st.session_state.booking_course
+    bd = st.session_state.booking_details
+
+    st.balloons()
+    st.success("✨ Your booking has been confirmed!")
+
+    st.markdown(f"""
+    ### {c['title']}
+    {c['location']} · {c['cost']}
+
+    👤 {bd['name']}  
+    📅 {bd['date']}  
+    👥 {bd['participants']} people  
+    💳 {bd['payment']}
+    """)
+
+    if st.button("← Back to courses"):
+        st.session_state.booking_step = None
+        st.session_state.booking_course = None
+        st.rerun()
+
+    st.stop()
+# ═══════════════════════════════════════════════════════════════════
+# STYLES
+# ═══════════════════════════════════════════════════════════════════
+st.markdown(f"""
+<style>
+.bookings-panel {{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 320px;
+    background: white;
+    border-left: 1px solid rgba(163, 177, 138, 0.3);
+    padding: 80px 20px 20px 20px;
+    z-index: 9999;
+}}
+
+.booking-card {{
+    background: #F9F6EE;
+    border: 1px solid #E6EBE0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+}}
+
+.remove-btn {{
+    background: none;
+    border: none;
+    color: #BC6C25;
+    font-size: 0.8rem;
+    cursor: pointer;
+    float: right;
+}}
+</style>
+""", unsafe_allow_html=True)
+
+
 # ═══════════════════════════════════════════════════════════════════
 # SIDEBAR - FILTERS
 # ═══════════════════════════════════════════════════════════════════
@@ -319,7 +542,7 @@ with st.sidebar:
     col1, col2, col3 = st.columns([0.5, 2, 0.5])
     with col2:
         st.image("app/Screenshot 2026-03-27 at 16.45.21.png", use_container_width=True)
-    
+
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("## Filters")
     st.markdown("<br>", unsafe_allow_html=True)
@@ -351,15 +574,19 @@ with st.sidebar:
         "Inner Qualities",
         all_skills
     )
-    
     st.markdown("<br><br>", unsafe_allow_html=True)
     st.markdown("---")
+    if st.button(f"🛒 My Courses ({len(st.session_state.booked_courses)})"):
+        st.session_state.panel_open = not st.session_state.panel_open
+        st.rerun()
+    st.markdown("---")
     st.caption(f"Signed in as **{user_id}**")
+
 
 # ═══════════════════════════════════════════════════════════════════
 # HEADER
 # ═══════════════════════════════════════════════════════════════════
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([1, 1.5])
 
 with col1:
     st.markdown(f"""
@@ -368,6 +595,8 @@ with col1:
         
     </div>
     """, unsafe_allow_html=True)
+    if st.button("💬 Ask our Chatbot"):
+        st.switch_page("pages/1_Questionnaire.py")
 
 with col2:
     st.markdown("""
@@ -378,8 +607,51 @@ with col2:
     </a>
     """, unsafe_allow_html=True)
 
-    if st.button("💬 Open Chatbot"):
-        st.switch_page("pages/1_Questionnaire.py")
+# ═══════════════════════════════════════════════════════════════════
+# PANEL CONTENT
+# ═══════════════════════════════════════════════════════════════════
+if st.session_state.panel_open:
+    st.markdown("### 🛒 My Courses")
+
+    if not st.session_state.booked_courses:
+        st.markdown("<p style='color:#A3B18A;'>No paths chosen yet.</p>", unsafe_allow_html=True)
+
+    for i, b in enumerate(st.session_state.booked_courses):
+        course_data = b["course"] if "course" in b else b
+        c = b["course"] if "course" in b else b
+        paid = b.get("paid", False)
+        with st.container():
+            col1, col2 = st.columns([5, 2])
+
+            # LEFT: course info
+            with col1:
+                st.markdown(f"""
+                <div class="booking-card">
+                    <div style="color:#344E41;font-weight:600;">{course_data['title']}</div>
+                    <div style="color:#6B705C;font-size:0.8rem;">
+                        📍 {course_data['location']} · <b>{course_data['cost']}</b>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            # RIGHT: buttons
+            with col2:
+                btn1, btn2 = st.columns(2)
+
+                # 💳 PAY NOW
+                with btn1:
+                    if st.button("💳", key=f"pay_{i}_{c['title']}"):
+                        st.session_state.booking_course = c
+                        st.session_state.booking_step = "form"
+                        st.rerun()
+                    else:
+                        st.button("Paid ✅", key=f"paid_{i}_{c['title']}", disabled=True)
+
+                # ❌ REMOVE
+                with btn2:
+                    if st.button("❌", key=f"remove_{i}_{c['title']}"):
+                        remove_course(i)
+                        st.rerun()
 
 # ═══════════════════════════════════════════════════════════════════
 # SEARCH SECTION
@@ -435,6 +707,20 @@ else:
 # ═══════════════════════════════════════════════════════════════════
 # COURSE DISPLAY
 # ═══════════════════════════════════════════════════════════════════
+def get_booking_status(course):
+    """
+    Returns:
+        None       -> not booked
+        'unpaid'   -> booked but not paid
+        'paid'     -> booked and paid
+    """
+    for b in st.session_state.booked_courses:
+        c = b["course"] if "course" in b else b
+        if c["title"] == course["Title"]:
+            return 'paid' if b.get("paid", False) else 'unpaid'
+    return None
+
+
 if display_df.empty:
     st.markdown("<br><br>", unsafe_allow_html=True)
     st.info("🌿 No courses match your current filters. Try adjusting your search criteria.")
@@ -446,11 +732,13 @@ else:
         for col_idx in range(3):
             if i + col_idx < len(display_df):
                 row = display_df.iloc[i + col_idx]
-                
+                status = get_booking_status(row)  # None / 'unpaid' / 'paid'
+
                 with cols[col_idx]:
                     with st.container(border=True):
-                        # Title
-                        st.markdown(f'<p class="course-title">{row["Title"]}</p>', unsafe_allow_html=True)
+                        # Title with tick if paid
+                        tick = " ✅" if status == "paid" else ""
+                        st.markdown(f'<p class="course-title">{row["Title"]}{tick}</p>', unsafe_allow_html=True)
                         
                         # Meta info
                         st.markdown(f'<p class="course-meta">👤 {row["Instructor"]}<br>📍 {row["Location"]}</p>', unsafe_allow_html=True)
@@ -465,12 +753,29 @@ else:
                         # Price
                         st.markdown(f'<p class="course-price">£{row["Cost"]}</p>', unsafe_allow_html=True)
                         
-                        # Button
-                        if st.button("Reserve Your Spot", key=row["Class ID"], use_container_width=True):
-                            st.balloons()
-                            st.success("✨ Booking confirmed! We look forward to seeing you.")
-        
-        st.markdown("<br>", unsafe_allow_html=True)
+                        # Buttons
+                        if status == 'paid':
+                            st.button("Paid ✅", key=f"paid_{row['Class ID']}", disabled=True, use_container_width=True)
+                        elif status == 'unpaid':
+                            if st.button("💳 Pay now", key=f"pay_{row['Class ID']}", use_container_width=True):
+                                st.session_state.booking_course = {
+                                    "title": row["Title"],
+                                    "location": row["Location"],
+                                    "cost": f"£{row['Cost']}"
+                                }
+                                st.session_state.booking_step = "form"
+                                st.rerun()
+                        else:  # Not booked yet
+                            if st.button("Reserve Your Spot", key=row["Class ID"], use_container_width=True):
+                                st.session_state.booking_course = {
+                                    "title": row["Title"],
+                                    "location": row["Location"],
+                                    "cost": f"£{row['Cost']}"
+                                }
+                                st.session_state.booking_step = "form"
+                                st.rerun()
+    
+    st.markdown("<br>", unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════════════════════════════
 # FOOTER / CONTACT
